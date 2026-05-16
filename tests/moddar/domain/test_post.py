@@ -1,44 +1,35 @@
 from moddar.domain.post import Post
-from moddar.domain.user import User
 
 
 class TestPost:
     """Tests for the Post domain entity."""
 
     @staticmethod
-    def _make_user() -> User:
-        return User(id="u1", username="testuser")
-
-    @staticmethod
     def _make_post(**overrides: object) -> Post:
         """Create a Post with sensible defaults, overridden by kwargs."""
         kwargs: dict[str, object] = {
-            "id": "p1",
+            "slug": "p1",
             "title": "Test Title",
             "body": "Test body content.",
-            "user": TestPost._make_user(),
+            "user_id": "u1",
         }
         kwargs.update(overrides)
         return Post(**kwargs)  # type: ignore[arg-type]
 
     def test_init_when_required_args_passed_then_stores_them(self) -> None:
-        user = self._make_user()
+        post = Post(slug="p1", title="Title", body="Body", user_id="u1")
 
-        post = Post(id="p1", title="Title", body="Body", user=user)
-
-        assert post.id == "p1"
+        assert post.slug == "p1"
         assert post.title == "Title"
         assert post.body == "Body"
-        assert post.user == user
+        assert post.user_id == "u1"
 
     def test_init_when_all_arguments_passed_then_stores_optional_fields(self) -> None:
-        user = self._make_user()
-
         post = Post(
-            id="p2",
+            slug="p2",
             title="Full Title",
             body="Full body.",
-            user=user,
+            user_id="u2",
             flairs=["flair1", "flair2"],
             link="https://example.com",
             images=["img1.png", "img2.jpg"],
@@ -83,37 +74,21 @@ class TestPost:
 
         assert post.images == ["a.png"]
 
-    def test_add_flair_when_called_multiple_times_then_appends_sequentially(self) -> None:
-        post = self._make_post()
-
-        post.add_flair("discussion")
-        post.add_flair("meta")
-
-        assert post.flairs == ["discussion", "meta"]
-
-    def test_add_flair_when_default_flairs_empty_then_adds_successfully(self) -> None:
-        post = self._make_post()
-
-        post.add_flair("first")
-
-        assert post.flairs == ["first"]
-
     def test_eq_when_same_values_then_returns_true(self) -> None:
-        user = self._make_user()
         post_a = Post(
-            id="p1", title="T", body="B", user=user,
+            slug="p1", title="T", body="B", user_id="u1",
             flairs=["f1"], link="http://x.com", images=["i.png"],
         )
         post_b = Post(
-            id="p1", title="T", body="B", user=user,
+            slug="p1", title="T", body="B", user_id="u1",
             flairs=["f1"], link="http://x.com", images=["i.png"],
         )
 
         assert post_a == post_b
 
-    def test_eq_when_different_id_then_returns_false(self) -> None:
-        post_a = self._make_post(id="p1")
-        post_b = self._make_post(id="p2")
+    def test_eq_when_different_slug_then_returns_false(self) -> None:
+        post_a = self._make_post(slug="p1")
+        post_b = self._make_post(slug="p2")
 
         assert post_a != post_b
 
@@ -129,11 +104,9 @@ class TestPost:
 
         assert post_a != post_b
 
-    def test_eq_when_different_user_then_returns_false(self) -> None:
-        user_a = User(id="u1", username="alice")
-        user_b = User(id="u2", username="bob")
-        post_a = self._make_post(user=user_a)
-        post_b = self._make_post(user=user_b)
+    def test_eq_when_different_user_id_then_returns_false(self) -> None:
+        post_a = self._make_post(user_id="u1")
+        post_b = self._make_post(user_id="u2")
 
         assert post_a != post_b
 
@@ -161,9 +134,8 @@ class TestPost:
         assert post != "not-a-post"
 
     def test_repr_when_all_fields_set_then_includes_all_values(self) -> None:
-        user = self._make_user()
         post = Post(
-            id="p99", title="Repr", body="Body here", user=user,
+            slug="p99", title="Repr", body="Body here", user_id="u99",
             flairs=["tag"], link="http://l.com", images=["im.png"],
         )
 

@@ -1,3 +1,11 @@
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from moddar.domain.post import Post
+
+
 class User:
     """Represents a Reddit user who creates posts."""
 
@@ -5,11 +13,11 @@ class User:
         self,
         id: str,
         username: str,
-        posts: list[str] | None = None,
+        posts: list[Post] | None = None,
     ) -> None:
         self._id = id
         self._username = username
-        self._posts: list[str] = posts if posts is not None else []
+        self._posts: list[Post] = posts if posts is not None else []
 
     @property
     def id(self) -> str:
@@ -20,21 +28,17 @@ class User:
         return self._username
 
     @property
-    def posts(self) -> list[str]:
+    def posts(self) -> list[Post]:
         return self._posts
 
-    def add_post(self, post_id: str) -> None:
-        """Add a post ID to this user's list of posts."""
-        self._posts.append(post_id)
+    def add_post(self, post: Post) -> None:
+        """Add a post to this user's list of posts."""
+        self._posts.append(post)
 
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, User):
             return NotImplemented
-        return (
-            self._id == other._id
-            and self._username == other._username
-            and self._posts == other._posts
-        )
+        return self._id == other._id
 
     def __repr__(self) -> str:
         return (

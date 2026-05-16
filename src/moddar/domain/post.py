@@ -1,35 +1,27 @@
-from __future__ import annotations
-
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from moddar.domain.user import User
-
-
 class Post:
     """Represents a Reddit post made by a user."""
 
     def __init__(
         self,
-        id: str,
+        slug: str,
         title: str,
         body: str,
-        user: User,
+        user_id: str,
         flairs: list[str] | None = None,
         link: str | None = None,
         images: list[str] | None = None,
     ) -> None:
-        self._id = id
+        self._slug = slug
         self._title = title
         self._body = body
-        self._user = user
+        self._user_id = user_id
         self._flairs: list[str] = flairs if flairs is not None else []
         self._link: str | None = link
         self._images: list[str] | None = images
 
     @property
-    def id(self) -> str:
-        return self._id
+    def slug(self) -> str:
+        return self._slug
 
     @property
     def title(self) -> str:
@@ -40,8 +32,8 @@ class Post:
         return self._body
 
     @property
-    def user(self) -> User:
-        return self._user
+    def user_id(self) -> str:
+        return self._user_id
 
     @property
     def flairs(self) -> list[str]:
@@ -55,18 +47,14 @@ class Post:
     def images(self) -> list[str] | None:
         return self._images
 
-    def add_flair(self, flair: str) -> None:
-        """Add a flair/tag to this post."""
-        self._flairs.append(flair)
-
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Post):
             return NotImplemented
         return (
-            self._id == other._id
+            self._slug == other._slug
             and self._title == other._title
             and self._body == other._body
-            and self._user == other._user
+            and self._user_id == other._user_id
             and self._flairs == other._flairs
             and self._link == other._link
             and self._images == other._images
@@ -74,8 +62,8 @@ class Post:
 
     def __repr__(self) -> str:
         return (
-            f"Post(id={self._id!r}, title={self._title!r}, "
-            f"body={self._body!r}, user={self._user!r}, "
+            f"Post(slug={self._slug!r}, title={self._title!r}, "
+            f"body={self._body!r}, user_id={self._user_id!r}, "
             f"flairs={self._flairs!r}, link={self._link!r}, "
             f"images={self._images!r})"
         )
