@@ -15,6 +15,7 @@ class LinkSnapshot:
     title: str
     text: str
     account_id: str
+    subreddit: str | None = None
     flairs: list[str] = field(default_factory=list)
     url: str | None = None
     images: list[str] | None = None

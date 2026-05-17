@@ -7,6 +7,7 @@ class Link:
         title: str,
         text: str,
         account_id: str,
+        subreddit: str | None = None,
         flairs: list[str] | None = None,
         url: str | None = None,
         images: list[str] | None = None,
@@ -15,6 +16,7 @@ class Link:
         self._title = title
         self._text = text
         self._account_id = account_id
+        self._subreddit: str | None = subreddit
         self._flairs: list[str] = flairs if flairs is not None else []
         self._url: str | None = url
         self._images: list[str] | None = images
@@ -36,6 +38,10 @@ class Link:
         return self._account_id
 
     @property
+    def subreddit(self) -> str | None:
+        return self._subreddit
+
+    @property
     def flairs(self) -> list[str]:
         return self._flairs
 
@@ -55,6 +61,7 @@ class Link:
             and self._title == other._title
             and self._text == other._text
             and self._account_id == other._account_id
+            and self._subreddit == other._subreddit
             and self._flairs == other._flairs
             and self._url == other._url
             and self._images == other._images
@@ -64,6 +71,7 @@ class Link:
         return (
             f"Link(id36={self._id36!r}, title={self._title!r}, "
             f"text={self._text!r}, account_id={self._account_id!r}, "
+            f"subreddit={self._subreddit!r}, "
             f"flairs={self._flairs!r}, url={self._url!r}, "
             f"images={self._images!r})"
         )
