@@ -1,0 +1,7 @@
+site_name: ModDar
+
+theme:
+  name: terminal
+
+nav:
+  - Home: index.md
