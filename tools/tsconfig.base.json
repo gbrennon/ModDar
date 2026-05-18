@@ -42,6 +42,14 @@
     "outDir": "../dist",
     "rootDir": "..",
 
+    // Path aliases for import resolution (relative to tools/).
+    "paths": {
+      "#shared/*": ["../src/shared/*"],
+      "#server/*": ["../src/server/*"],
+      "#client/*": ["../src/client/*"],
+      "#tests/*": ["../tests/*"]
+    },
+
     // Assume library types are checked and compatible.
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,

@@ -4,6 +4,12 @@
   "version": "0.0.0",
   "license": "BSD-3-Clause",
   "type": "module",
+  "imports": {
+    "#shared/*": "./src/shared/*",
+    "#server/*": "./src/server/*",
+    "#client/*": "./src/client/*",
+    "#tests/*": "./tests/*"
+  },
   "scripts": {
     "build": "node --experimental-strip-types ./tools/build.ts --minify",
     "deploy": "npm run build && devvit upload",
