@@ -12,7 +12,7 @@ import {
   type IncrementRequest,
   type IncrementResponse,
   type InitResponse,
-} from "../shared/api.ts";
+} from "#shared/api";
 import { once } from "node:events";
 
 export async function serverOnRequest(

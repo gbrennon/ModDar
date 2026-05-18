@@ -1,11 +1,12 @@
 import {
   createLinkSnapshot,
   type LinkSnapshot,
-} from "../dtos/responses/review-link-response.ts";
-import type { Link } from "../../domain/link.ts";
+} from "#server/application/dtos/responses/review-link-response";
+import type { Link } from "#server/domain/link";
+import type { Mapper } from "#shared/ports/mapper";
 
 /** Maps a domain ``Link`` to a primitive-only ``LinkSnapshot`` DTO. */
-export class LinkSnapshotMapper {
+export class LinkSnapshotMapper implements Mapper<Link, LinkSnapshot> {
   map(link: Link): LinkSnapshot {
     return createLinkSnapshot({
       id36: link.id36,

@@ -1,10 +1,11 @@
 import { describe, it, expect } from "vitest";
-import { Link } from "../../../../src/server/domain/link.ts";
-import { LinkSnapshotMapper } from "../../../../src/server/application/mappers/link-snapshot-mapper.ts";
+import { Link } from "#server/domain/link";
+import { LinkSnapshotMapper } from "#server/application/mappers/link-snapshot-mapper";
+import type { Mapper } from "#shared/ports/mapper";
 import {
   createLinkSnapshot,
   type LinkSnapshot,
-} from "../../../../src/server/application/dtos/responses/review-link-response.ts";
+} from "#server/application/dtos/responses/review-link-response";
 
 function makeLink(overrides: Partial<ConstructorParameters<typeof Link>[0]> = {}): Link {
   const defaults: ConstructorParameters<typeof Link>[0] = {
@@ -19,6 +20,11 @@ function makeLink(overrides: Partial<ConstructorParameters<typeof Link>[0]> = {}
 
 describe("LinkSnapshotMapper", () => {
   const mapper = new LinkSnapshotMapper();
+
+  it("implements Mapper<Link, LinkSnapshot>", () => {
+    const _satisfies: Mapper<Link, LinkSnapshot> = mapper;
+    void _satisfies;
+  });
 
   describe("map", () => {
     it("when link has all fields then copies everything", () => {

@@ -3,14 +3,14 @@ import {
   createReviewLinkResponse,
   type LinkMatch,
   type ReviewLinkResponse,
-} from "../dtos/responses/review-link-response.ts";
-import type { ReviewLinkRequest } from "../dtos/requests/review-link-request.ts";
-import type { FetchCandidateLinksPort } from "../ports/outbound/fetch-candidate-links-port.ts";
-import type { LinkSourcePort } from "../ports/outbound/link-source-port.ts";
-import type { SimilarityPort } from "../ports/outbound/similarity-port.ts";
-import type { DetectCrossSubredditSpamPort } from "../ports/inbound/detect-cross-subreddit-spam-port.ts";
-import { Link } from "../../domain/link.ts";
-import type { LinkSnapshotMapper } from "../mappers/link-snapshot-mapper.ts";
+} from "#server/application/dtos/responses/review-link-response";
+import type { ReviewLinkRequest } from "#server/application/dtos/requests/review-link-request";
+import type { FetchCandidateLinksPort } from "#server/application/ports/outbound/fetch-candidate-links-port";
+import type { LinkSourcePort } from "#server/application/ports/outbound/link-source-port";
+import type { SimilarityPort } from "#server/application/ports/outbound/similarity-port";
+import type { DetectCrossSubredditSpamPort } from "#server/application/ports/inbound/detect-cross-subreddit-spam-port";
+import { Link } from "#server/domain/link";
+import type { LinkSnapshotMapper } from "#server/application/mappers/link-snapshot-mapper";
 
 export class DetectCrossSubredditSpamService
   implements DetectCrossSubredditSpamPort
