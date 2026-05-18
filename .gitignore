@@ -1,6 +1,23 @@
 node_modules
 .DS_Store
-dist
 .env
-public/*.js
-public/*.js.map
+
+# Ignore build outputs and source maps
+dist/
+build/
+*.map
+*.d.ts
+*.js
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
