@@ -101,7 +101,7 @@ export async function handleReviewLink(
 // Helpers (same pattern as existing server.ts)
 // ---------------------------------------------------------------------------
 
-function writeJSON<T extends Record<string, unknown>>(
+function writeJSON<T>(
   status: number,
   json: Readonly<T>,
   rsp: ServerResponse,
