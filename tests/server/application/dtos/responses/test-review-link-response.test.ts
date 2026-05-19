@@ -3,7 +3,7 @@ import {
   createLinkSnapshot,
   createLinkMatch,
   createReviewLinkResponse,
-} from "../../../../../src/server/application/dtos/responses/review-link-response.ts";
+} from "#server/application/dtos/responses/review-link-response";
 
 describe("createReviewLinkResponse", () => {
   const snapshot = createLinkSnapshot({

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { Link } from "../../../src/server/domain/link.ts";
+import { Link } from "#server/domain/link";
 
 function makeLink(overrides: Partial<ConstructorParameters<typeof Link>[0]> = {}): Link {
   const defaults = {
