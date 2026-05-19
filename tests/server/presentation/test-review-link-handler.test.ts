@@ -9,14 +9,14 @@
 import { describe, it, expect, vi } from "vitest";
 import { IncomingMessage, ServerResponse } from "node:http";
 import { EventEmitter } from "node:events";
-import { handleReviewLink } from "../../../src/server/presentation/review-link-handler.ts";
-import type { DetectCrossSubredditSpamPort } from "../../../src/server/application/ports/inbound/detect-cross-subreddit-spam-port.ts";
-import type { ReviewLinkRequest } from "../../../src/server/application/dtos/requests/review-link-request.ts";
+import { handleReviewLink } from "#server/presentation/review-link-handler";
+import type { DetectCrossSubredditSpamPort } from "#server/application/ports/inbound/detect-cross-subreddit-spam-port";
+import type { ReviewLinkRequest } from "#server/application/dtos/requests/review-link-request";
 import {
   createReviewLinkResponse,
   createLinkSnapshot,
   type ReviewLinkResponse,
-} from "../../../src/server/application/dtos/responses/review-link-response.ts";
+} from "#server/application/dtos/responses/review-link-response";
 
 // ---------------------------------------------------------------------------
 // Test doubles

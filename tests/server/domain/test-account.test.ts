@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { Account } from "../../../src/server/domain/account.ts";
-import { Link } from "../../../src/server/domain/link.ts";
+import { Account } from "#server/domain/account";
+import { Link } from "#server/domain/link";
 
 // ---------------------------------------------------------------------------
 // Helpers

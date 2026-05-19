@@ -6,9 +6,9 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
-import { FetchCandidateLinksAdapter } from "../../../src/server/infrastructure/fetch-candidate-links-adapter.ts";
-import type { LinkSourcePort } from "../../../src/server/application/ports/outbound/link-source-port.ts";
-import { Link } from "../../../src/server/domain/link.ts";
+import { FetchCandidateLinksAdapter } from "#server/infrastructure/fetch-candidate-links-adapter";
+import type { LinkSourcePort } from "#server/application/ports/outbound/link-source-port";
+import { Link } from "#server/domain/link";
 
 // ---------------------------------------------------------------------------
 // Helpers
