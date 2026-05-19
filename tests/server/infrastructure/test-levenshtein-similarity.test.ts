@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { LevenshteinSimilarity } from "../../../src/server/infrastructure/levenshtein-similarity.ts";
+import { LevenshteinSimilarity } from "#server/infrastructure/levenshtein-similarity";
 
 describe("LevenshteinSimilarity", () => {
   const similarity = new LevenshteinSimilarity();

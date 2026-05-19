@@ -11,8 +11,8 @@ import {
   redditPostToLink,
   type RedditApi,
   type RedditPost,
-} from "../../../src/server/infrastructure/link-source-adapter.ts";
-import { Link } from "../../../src/server/domain/link.ts";
+} from "#server/infrastructure/link-source-adapter";
+import { Link } from "#server/domain/link";
 
 // ---------------------------------------------------------------------------
 // Helpers
