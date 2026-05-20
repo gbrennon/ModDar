@@ -70,9 +70,9 @@ class RealSimilarity implements SimilarityPort {
       for (let i = 1; i <= m; i++) {
         const cost = a[i - 1] === b[j - 1] ? 0 : 1;
         currRow[i] = Math.min(
-          currRow[i - 1] + 1,
-          prevRow[i] + 1,
-          prevRow[i - 1] + cost,
+          currRow[i - 1]! + 1,
+          prevRow[i]! + 1,
+          prevRow[i - 1]! + cost,
         );
       }
       [prevRow, currRow] = [currRow, prevRow];

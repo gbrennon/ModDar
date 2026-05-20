@@ -5,10 +5,10 @@
   "license": "BSD-3-Clause",
   "type": "module",
   "imports": {
-    "#shared/*": "./src/shared/*",
-    "#server/*": "./src/server/*",
-    "#client/*": "./src/client/*",
-    "#tests/*": "./tests/*"
+    "#shared/*": "./src/shared/*.ts",
+    "#server/*": "./src/server/*.ts",
+    "#client/*": "./src/client/*.ts",
+    "#tests/*": "./tests/*.ts"
   },
   "scripts": {
     "build": "node --experimental-strip-types ./tools/build.ts --minify",
