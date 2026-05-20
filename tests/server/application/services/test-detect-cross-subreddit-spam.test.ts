@@ -1,17 +1,17 @@
 import { describe, it, expect } from "vitest";
-import { Link } from "../../../../src/server/domain/link.ts";
+import { Link } from "#server/domain/link";
 import {
   DetectCrossSubredditSpamService,
   computeSimilarity,
-} from "../../../../src/server/application/services/detect-cross-subreddit-spam.ts";
-import type { LinkSourcePort } from "../../../../src/server/application/ports/outbound/link-source-port.ts";
-import type { FetchCandidateLinksPort } from "../../../../src/server/application/ports/outbound/fetch-candidate-links-port.ts";
-import type { SimilarityPort } from "../../../../src/server/application/ports/outbound/similarity-port.ts";
-import { LinkSnapshotMapper } from "../../../../src/server/application/mappers/link-snapshot-mapper.ts";
+} from "#server/application/services/detect-cross-subreddit-spam";
+import type { LinkSourcePort } from "#server/application/ports/outbound/link-source-port";
+import type { FetchCandidateLinksPort } from "#server/application/ports/outbound/fetch-candidate-links-port";
+import type { SimilarityPort } from "#server/application/ports/outbound/similarity-port";
+import { LinkSnapshotMapper } from "#server/application/mappers/link-snapshot-mapper";
 import {
   createReviewLinkRequest,
   type ReviewLinkRequest,
-} from "../../../../src/server/application/dtos/requests/review-link-request.ts";
+} from "#server/application/dtos/requests/review-link-request";
 
 // ---------------------------------------------------------------------------
 // Stubs
