@@ -95,7 +95,7 @@ describe("createContainer", () => {
     const api = makeRedditApi();
     const container = createContainer(api, { similarityThreshold: 0.85 });
 
-    const service = container.detectCrossSubredditSpamService as {
+    const service = container.detectCrossSubredditSpamService as unknown as {
       similarityThreshold: number;
     };
     expect(service.similarityThreshold).toBe(0.85);
@@ -105,7 +105,7 @@ describe("createContainer", () => {
     const api = makeRedditApi();
     const container = createContainer(api);
 
-    const service = container.detectCrossSubredditSpamService as {
+    const service = container.detectCrossSubredditSpamService as unknown as {
       similarityThreshold: number;
     };
     expect(service.similarityThreshold).toBe(0.7);
@@ -260,7 +260,7 @@ function makeStubService(
               accountId: "u1",
             },
             matches: [],
-          } as ReviewLinkResponse)
+          } as unknown as ReviewLinkResponse)
         );
       }),
   };
