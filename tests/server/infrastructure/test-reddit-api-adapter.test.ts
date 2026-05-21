@@ -10,7 +10,7 @@ import {
   RedditApiAdapter,
   devvitPostToRedditPost,
 } from "#server/infrastructure/reddit-api-adapter";
-import type { RedditPost } from "#server/infrastructure/link-source-adapter";
+import type { RedditClient, Post } from "@devvit/web/server";
 
 // ---------------------------------------------------------------------------
 // Minimal stubs matching the Devvit shapes we depend on
@@ -27,7 +27,7 @@ type PostStubOverrides = {
 };
 
 /** A minimal ``Post`` stub for testing conversion. */
-function makePost(overrides: PostStubOverrides = {}): Parameters<typeof devvitPostToRedditPost>[0] {
+function makePost(overrides: PostStubOverrides = {}): Post {
   return {
     id: "id" in overrides ? overrides.id! : "t3_abc123",
     title: overrides.title ?? "Test Post",
@@ -35,12 +35,12 @@ function makePost(overrides: PostStubOverrides = {}): Parameters<typeof devvitPo
     authorId: "authorId" in overrides ? overrides.authorId! : "t2_u1",
     subredditName: overrides.subredditName ?? "scala",
     flair: overrides.flairText !== undefined
-      ? (overrides.flairText === null ? undefined : { text: overrides.flairText } as unknown as Parameters<typeof devvitPostToRedditPost>[0]["flair"])
-      : ({ text: "Discussion" } as unknown as Parameters<typeof devvitPostToRedditPost>[0]["flair"]),
+      ? (overrides.flairText === null ? undefined : { text: overrides.flairText } as unknown as Post["flair"])
+      : ({ text: "Discussion" } as unknown as Post["flair"]),
     url: overrides.url ?? "https://example.com",
     getDuplicates: vi.fn(),
     comments: { all: vi.fn().mockResolvedValue([]) },
-  } as unknown as Parameters<typeof devvitPostToRedditPost>[0];
+  } as unknown as Post;
 }
 
 /** A minimal ``RedditClient`` stub for testing the adapter. */
@@ -48,7 +48,7 @@ function makeRedditClient(overrides: Partial<{
   getPostById: ReturnType<typeof vi.fn>;
   getNewPosts: ReturnType<typeof vi.fn>;
   getPostsByUser: ReturnType<typeof vi.fn>;
-}> = {}): Parameters<typeof RedditApiAdapter.prototype.constructor>[0] {
+}> = {}): RedditClient {
   return {
     getPostById: vi.fn().mockResolvedValue(undefined),
     getNewPosts: vi.fn().mockReturnValue({
@@ -58,7 +58,7 @@ function makeRedditClient(overrides: Partial<{
       all: vi.fn().mockResolvedValue([]),
     }),
     ...overrides,
-  } as unknown as Parameters<typeof RedditApiAdapter.prototype.constructor>[0];
+  } as unknown as RedditClient;
 }
 
 // ---------------------------------------------------------------------------

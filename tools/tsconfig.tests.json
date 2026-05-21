@@ -1,9 +1,11 @@
 {
   "extends": "./tsconfig.server.json",
   "compilerOptions": {
-    "rootDir": "../../tests/server",
-    "outDir": "../../dist/types/tests",
-    "tsBuildInfoFile": "../../dist/types/tests/tsconfig.tsbuildinfo"
+    "rootDir": "../tests/server",
+    "outDir": "../dist/types/tests",
+    "tsBuildInfoFile": "../dist/types/tests/tsconfig.tsbuildinfo",
+    "emitDeclarationOnly": true,
+    "rewriteRelativeImportExtensions": false
   },
   "include": ["../tests/server/**/*"],
   "references": [

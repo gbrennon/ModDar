@@ -69,6 +69,6 @@ const productionContainer = createContainer(new RedditApiAdapter(reddit), {
  * @param req - Incoming HTTP request.
  * @param rsp - Outgoing HTTP response.
  */
-export const reviewLinkHandler = createReviewLinkHandler(
+export const reviewLinkHandler: (req: IncomingMessage, rsp: ServerResponse) => Promise<void> = createReviewLinkHandler(
   productionContainer.detectCrossSubredditSpamService,
 );

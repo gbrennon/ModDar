@@ -52,7 +52,7 @@ describe("Container", () => {
       const reddit = makeRedditApi();
 
       const c = new Container(reddit, { similarityThreshold: 0.8 });
-      const svc = c.detectCrossSubredditSpamService as {
+      const svc = c.detectCrossSubredditSpamService as unknown as {
         similarityThreshold: number;
       };
       expect(svc.similarityThreshold).toBe(0.8);
@@ -62,7 +62,7 @@ describe("Container", () => {
       const reddit = makeRedditApi();
 
       const c = new Container(reddit);
-      const svc = c.detectCrossSubredditSpamService as {
+      const svc = c.detectCrossSubredditSpamService as unknown as {
         similarityThreshold: number;
       };
       expect(svc.similarityThreshold).toBe(0.7);
@@ -72,7 +72,7 @@ describe("Container", () => {
       const reddit = makeRedditApi();
 
       const c = new Container(reddit, { similarityThreshold: 0.0 });
-      const svc = c.detectCrossSubredditSpamService as {
+      const svc = c.detectCrossSubredditSpamService as unknown as {
         similarityThreshold: number;
       };
       expect(svc.similarityThreshold).toBe(0.0);
@@ -82,7 +82,7 @@ describe("Container", () => {
       const reddit = makeRedditApi();
 
       const c = new Container(reddit, { similarityThreshold: 1.0 });
-      const svc = c.detectCrossSubredditSpamService as {
+      const svc = c.detectCrossSubredditSpamService as unknown as {
         similarityThreshold: number;
       };
       expect(svc.similarityThreshold).toBe(1.0);

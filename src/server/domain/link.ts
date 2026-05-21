@@ -88,7 +88,7 @@ export class Link {
         ? other._images === null
         : other._images !== null &&
           this._images.length === other._images.length &&
-          this._images.every((img, i) => img === other._images[i]))
+          this._images.every((img, i) => img === other._images![i]))
     );
   }
 
