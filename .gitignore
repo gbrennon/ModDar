@@ -21,3 +21,7 @@ build/
 
 # OS
 Thumbs.db
+
+# vitepress
+docs/.vitepress/dist
+docs/.vitepress/cache

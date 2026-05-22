@@ -19,7 +19,10 @@
     "type-check": "tsc --build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:cov": "vitest run --coverage"
+    "test:cov": "vitest run --coverage",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "engines": {
     "node": ">=22.6.0"
@@ -34,6 +37,7 @@
     "@vitest/coverage-v8": "^4.1.6",
     "esbuild": "0.28.0",
     "typescript": "6.0.3",
+    "vitepress": "^1.6.4",
     "vitest": "^4.1.6"
   }
 }
